@@ -1,0 +1,11 @@
+Java:  11.0.22 --- /usr/lib/jvm/java-ll-openjdk-amd64 hadoon@bigdatan
+Hadoop: 3.3.6 --- http://192.168.0.115:9870/
+Spark 3.5.6 --- Interfaz 8080 y 7077 y 4040
+Pip Python 3
+cluster hadoop : 9870
+Kafka 3.7.2 
+
+cd ~
+
+archivo
+/opt/kafka/kafka_producer.py
