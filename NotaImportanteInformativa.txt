@@ -4,3 +4,6 @@ Consumidor:
 2. Tiempo real toma de datos (spark_streaming_consumer.py)
 Productor:
 1. Generar la escritura de los latos por filas de DataFrame (kafka_producer_git.py)
+
+Enlace video:
+https://youtu.be/4V6F-85b9yU

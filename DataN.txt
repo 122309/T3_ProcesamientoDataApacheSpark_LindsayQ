@@ -6,6 +6,12 @@ cluster hadoop : 9870
 Kafka 3.7.2 
 
 cd ~
+ver archivos 
+ls -l
+ejecución en Kafka
+/opt/Kafka
+
+
 
 Archivo
 /opt/kafka/kafka_producer.py
@@ -40,16 +46,37 @@ Kafka (Broker de Kafka)
 --------------------------
 
 Mis Archivos
-nano batch_processing.py (archivo sin nada)
+nano batch_processing.py (archivo prueba)
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 batch_processing.py
+
+
+
+nano kafka_producer.py (pruebas)
+
+
+
+
+vi
+Terminal uno: inciar servicios ZooKeeper y Kafka Broker.
+
+Terminal dos: consumidor (enlace de datos, recibe datos y procesa)
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 spark_streaming_consumer.py
+
+Terminal tres: productor: envia los mensajes
+python3 kafka_producer_git.py
 
 Productor: 
-nano batch_processing.py
-spark-submit batch_processing.py
+nano kafka_producer_git.py
+
+python3 kafka_producer_git.py
+
 Consumidor: 
 nano spark_streaming_consumer.py
-spark-submit spark_streaming_consumer.py
+
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 
+spark_streaming_consumer.py
 
 
-
+Verificación 4040
 
 
