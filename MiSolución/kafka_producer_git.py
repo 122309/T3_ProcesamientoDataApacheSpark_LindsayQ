@@ -16,10 +16,10 @@ KAFKA_TOPIC = 'clima_raw'        # Tema al que enviaremos los datos
 def download_file(url, local_path):
     """Descarga el archivo si no existe."""
     if os.path.exists(local_path):
-        print(f"✅ Archivo ya existe localmente en: {local_path}. Omitiendo descarga.")
+        print(f" Archivo ya existe localmente en: {local_path}. Omitiendo descarga.")
         return True
     
-    print(f"⬇️ Descargando archivo desde: {url}")
+    print(f" Descargando archivo desde: {url}")
     try:
         response = requests.get(url, stream=True)
         response.raise_for_status() 
@@ -28,11 +28,11 @@ def download_file(url, local_path):
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
         
-        print(f"🎉 Descarga completada. Archivo guardado en: {local_path}")
+        print(f" Descarga completada. Archivo guardado en: {local_path}")
         return True
 
     except requests.exceptions.RequestException as e:
-        print(f"❌ Error de descarga. Por favor, verifica tu conexión a internet o la URL.")
+        print(f" Error de descarga. Por favor, verifica tu conexión a internet o la URL.")
         print(f"Detalle del error: {e}")
         return False
 
@@ -54,9 +54,9 @@ def run_producer():
             # Serializar: convertir el mensaje a bytes antes de enviarlo
             value_serializer=lambda v: str(v).encode('utf-8')
         )
-        print(f"✅ Productor conectado a Kafka Broker: {KAFKA_BROKER}")
+        print(f" Productor conectado a Kafka Broker: {KAFKA_BROKER}")
     except Exception as e:
-        print(f"❌ Error al conectar con Kafka. Asegúrate de que el broker esté activo en {KAFKA_BROKER}.")
+        print(f" Error al conectar con Kafka. Asegúrate de que el broker esté activo en {KAFKA_BROKER}.")
         print(f"Detalle: {e}")
         sys.exit(1)
 
@@ -72,22 +72,22 @@ def run_producer():
                     producer.send(KAFKA_TOPIC, record)
                     
                     if line_number == 0:
-                         print(f"➡️ Enviando Cabecera: {record[:50]}...")
+                         print(f" Enviando Cabecera: {record[:50]}...")
                     elif line_number % 50 == 0:
                          print(f"   Mensajes de datos enviados: {line_number}...")
 
                     # Simular un flujo de tiempo real con una pequeña pausa
                     time.sleep(0.01) # 10 milisegundos de pausa
 
-            print(f"\n🎉 Todos los {line_number} registros de datos enviados a Kafka.")
+            print(f"\n Todos los {line_number} registros de datos enviados a Kafka.")
             producer.flush() # Asegura que todos los mensajes pendientes sean enviados
             
     except Exception as e:
-        print(f"❌ Error durante el envío de datos: {e}")
+        print(f" Error durante el envío de datos: {e}")
 
     finally:
         producer.close()
-        print("✅ Productor Kafka cerrado.")
+        print(" Productor Kafka cerrado.")
 
 if __name__ == "__main__":
     run_producer()
