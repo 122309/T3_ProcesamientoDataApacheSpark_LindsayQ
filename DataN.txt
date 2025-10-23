@@ -7,5 +7,49 @@ Kafka 3.7.2
 
 cd ~
 
-archivo
+Archivo
 /opt/kafka/kafka_producer.py
+
+--------------------------------------Iniciar servicios desde :
+HDFS: start-dfs.sh
+YARN: start-yarn.sh
+Zookeeper: cd ~/kafka/bin
+
+Kafka: 
+
+cd /opt/Kafka
+
+sudo nohup bin/kafka-server-start.sh config/kraft/server.properties > server.log 2>&1 &
+
+Verificar Kafka:
+ps aux | grep kafka
+
+lista tópicos, debe mostrar sensor_data
+
+/opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+-------------------------Jps (verificar servicios activos)
+NameNode y DataNode (de HDFS)
+
+ResourceManager y NodeManager (de YARN)
+
+QuorumPeerMain (ZooKeeper) -
+
+Kafka (Broker de Kafka)
+
+--------------------------
+
+Mis Archivos
+nano batch_processing.py (archivo sin nada)
+
+Productor: 
+nano batch_processing.py
+spark-submit batch_processing.py
+Consumidor: 
+nano spark_streaming_consumer.py
+spark-submit spark_streaming_consumer.py
+
+
+
+
+
